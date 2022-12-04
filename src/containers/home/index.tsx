@@ -1,9 +1,30 @@
-import React, { FunctionComponent, useState, useEffect } from 'react';
+import React, { FunctionComponent } from 'react';
+
+import codes from '../../assets/copy/codes';
+
+import Card from '../../components/Card';
+import Spinner from '../../components/Spinner';
+
+const cardList = [{
+    title: 'Spinner',
+    code: codes.spinnerCode,
+    component: <Spinner />,
+}];
 
 const HomeScreen: FunctionComponent = () => {
     return (
-        <div className='flex items-center justify-center w-screen h-screen text-black bg-red-500'>
-            lmao
+        <div className='flex items-start justify-center w-screen h-screen p-5'>
+            {cardList.map(item => {
+                const { title, code, component } = item;
+
+                return (
+                    <Card
+                        title={title}
+                        code={code}
+                        component={component}
+                    />
+                );
+            })}
         </div>
     );
 };
