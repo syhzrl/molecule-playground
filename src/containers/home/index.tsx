@@ -4,8 +4,14 @@ import codes from '../../assets/copy/codes';
 
 import Card from '../../components/Card';
 import Spinner from '../../components/Spinner';
+import ModalCard from '../../components/ModalCard';
 
 const cardList = [{
+    title: 'Modal',
+    code: codes.modalCode,
+    component: <ModalCard />
+    ,
+}, {
     title: 'Spinner',
     code: codes.spinnerCode,
     component: <Spinner />,
@@ -13,18 +19,20 @@ const cardList = [{
 
 const HomeScreen: FunctionComponent = () => {
     return (
-        <div className='flex items-start justify-center w-screen h-screen p-5'>
+        <div className='flex flex-col items-center w-screen h-screen gap-5 p-5'>
             {cardList.map(item => {
                 const { title, code, component } = item;
 
                 return (
                     <Card
+                        key={title}
                         title={title}
                         code={code}
                         component={component}
                     />
                 );
             })}
+
         </div>
     );
 };

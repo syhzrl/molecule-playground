@@ -25,3 +25,8 @@ body {
     font-family: 'Dosis';
     color: white;
 }
+
+p {
+    margin: 0;
+    padding: 0;
+}
