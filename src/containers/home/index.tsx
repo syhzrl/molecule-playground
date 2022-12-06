@@ -7,6 +7,7 @@ import Spinner from '../../components/Spinner';
 
 import ModalCard from '../../components/ModalCard';
 import DropdownCard from '../../components/DropdownCard';
+import Paginator from '../../components/Paginator';
 
 const cardList = [{
     title: 'Modal',
@@ -22,6 +23,10 @@ const cardList = [{
     title: 'Spinner',
     code: codes.spinnerCode,
     component: <Spinner />,
+}, {
+    title: 'Paginator',
+    code: codes.spinnerCode,
+    component: <Paginator noOfPages={5} />,
 }];
 
 const HomeScreen: FunctionComponent = () => {
