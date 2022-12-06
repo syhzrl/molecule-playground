@@ -22,6 +22,7 @@ const NavMenu: FunctionComponent = () => {
         'Modal',
         'Dropdown',
         'Spinner',
+        'Paginator',
     ];
 
     return (
