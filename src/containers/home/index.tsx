@@ -3,11 +3,12 @@ import React, { FunctionComponent } from 'react';
 import codes from '../../assets/copy/codes';
 
 import Card from '../../components/Card';
-import Spinner from '../../components/Spinner';
+import Loaders from '../../components/Loaders';
 
 import ModalCard from '../../components/ModalCard';
 import DropdownCard from '../../components/DropdownCard';
 import Paginator from '../../components/Paginator';
+import TooltipCard from '../../components/TooltipCard';
 
 const cardList = [{
     title: 'Modal',
@@ -20,13 +21,17 @@ const cardList = [{
     component: <DropdownCard />
     ,
 }, {
-    title: 'Spinner',
-    code: codes.spinnerCode,
-    component: <Spinner />,
+    title: 'Loaders',
+    code: codes.loadersCode,
+    component: <Loaders />,
 }, {
     title: 'Paginator',
-    code: codes.spinnerCode,
+    code: codes.paginatorCode,
     component: <Paginator noOfPages={5} />,
+}, {
+    title: 'Tooltip',
+    code: codes.tooltipCode,
+    component: <TooltipCard />,
 }];
 
 const HomeScreen: FunctionComponent = () => {

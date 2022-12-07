@@ -1,12 +1,41 @@
-const spinnerCode = `import React, { FunctionComponent } from 'react';
-    
-const Spinner: FunctionComponent = () => {
+const loadersCode = `const Loaders: FunctionComponent = () => {
     return (
-        <div className='w-40 h-40 border-8 border-solid rounded-full border-violet-700 border-t-violet-700/50 animate-spin' />
+        <div className='flex items-center justify-center w-full rounded-md h-96 bg-transparent gap-10'>
+            // Spinner
+            <div className='w-40 h-40 border-8 border-solid rounded-full border-violet-700/40 border-t-violet-700 animate-spin' />
+
+            // Card Loader #1
+            <div className='bg-violet-700 p-4 rounded-md h-80 w-60 flex flex-col justify-between'>
+                <div className='w-full bg-violet-900 h-1/2 rounded-md animate-pulse' />
+
+                <div className='w-full flex flex-col gap-2'>
+                    <div className='w-full bg-violet-900 h-8 rounded-md animate-pulse' />
+                    <div className='w-full bg-violet-900 h-8 rounded-md animate-pulse' />
+                    <div className='w-full bg-violet-900 h-8 rounded-md animate-pulse' />
+                </div>
+            </div>
+
+            // Card Loader #2
+            <div className='bg-violet-700 p-4 rounded-md h-60 w-80 flex flex-col justify-center items-center gap-4'>
+
+                <div className='flex justify-between items-center gap-6 w-full'>
+                    <div className='bg-violet-900 animate-pulse w-[30%] h-20 rounded-full' />
+
+                    <div className='w-[70%] flex flex-col gap-2'>
+                        <div className='w-full bg-violet-900 h-4 rounded-md animate-pulse' />
+                        <div className='w-full bg-violet-900 h-4 rounded-md animate-pulse' />
+                    </div>
+                </div>
+
+                <div className='w-full bg-violet-900 h-4 rounded-md animate-pulse' />
+                <div className='w-full bg-violet-900 h-4 rounded-md animate-pulse' />
+                <div className=' bg-violet-900 h-4 rounded-md animate-pulse w-4/5 self-start' />
+            </div>
+        </div>
     );
 };
 
-export default Spinner;`;
+export default Loaders;`;
 
 const modalCode = `interface ModalProps {
     isOpen: boolean;
@@ -188,8 +217,144 @@ const DropdownAbsolute: FunctionComponent<DropdownAbsoluteProps> = (props: Dropd
 
 export default DropdownAbsolute;`;
 
+const paginatorCode = `interface PaginatorProps {
+    noOfPages: number;
+}
+
+const Paginator: FunctionComponent<PaginatorProps> = (props: PaginatorProps) => {
+    const { noOfPages } = props;
+    const [selectedPage, setSelectedPage] = useState(1);
+
+    const pages = [];
+
+    for (let i = 0; i < noOfPages; i += 1) {
+        pages.push(i + 1);
+    }
+
+    const prevClickHandler = () => {
+        if (selectedPage === 1) {
+            return;
+        }
+
+        setSelectedPage(prev => prev - 1);
+    };
+
+    const nextClickHandler = () => {
+        if (selectedPage === noOfPages) {
+            return;
+        }
+
+        setSelectedPage(prev => prev + 1);
+    };
+
+    return (
+        <div className='flex gap-3'>
+            <button
+                type='button'
+                onClick={() => setSelectedPage(1)}
+                className='p-3 bg-violet-700 rounded-md hover:bg-violet-800 transition-colors duration-150'
+            >
+                Start
+            </button>
+            <button
+                type='button'
+                onClick={prevClickHandler}
+                className='p-3 bg-violet-700 rounded-md hover:bg-violet-800 transition-colors duration-150'
+            >
+                Prev
+            </button>
+
+            {pages.map((item) => {
+                return (
+                    <button
+                        key={item}
+                        type='button'
+                        onClick={() => setSelectedPage(item)}
+                        className={\`p-3 border-violet-700 border-2 rounded-md w-14 h-14 \${selectedPage === item && 'bg-violet-800'}\`}
+                    >
+                        {item}
+                    </button>
+                );
+            })}
+
+            <button
+                type='button'
+                onClick={nextClickHandler}
+                className='p-3 bg-violet-700 rounded-md hover:bg-violet-800 transition-colors duration-150'
+            >
+                Next
+            </button>
+            <button
+                type='button'
+                onClick={() => setSelectedPage(noOfPages)}
+                className='p-3 bg-violet-700 rounded-md hover:bg-violet-800 transition-colors duration-150'
+            >
+                End
+            </button>
+        </div>
+    );
+};
+
+export default Paginator;`;
+
+const tooltipCode = `export enum TooltipPositionEnum {
+    top,
+    bottom,
+    left,
+    right,
+}
+
+interface TooltipProps {
+    children: ReactNode;
+    tooltipText: string;
+    position: TooltipPositionEnum;
+}
+
+const Tooltip: FunctionComponent<TooltipProps> = (props: TooltipProps) => {
+    const { children, tooltipText, position } = props;
+
+    const [tooltipPos, setTooltipPos] = useState('');
+    const [arrowPos, setArrowPos] = useState('second');
+
+    useEffect(() => {
+        switch (position) {
+            case TooltipPositionEnum.top: setTooltipPos('bottom-full mb-3'); setArrowPos('top-full left-1/2 -translate-x-1/2 -translate-y-1/2'); break;
+            case TooltipPositionEnum.bottom: setTooltipPos('top-full mt-3'); setArrowPos('bottom-full left-1/2 -translate-x-1/2 translate-y-1/2'); break;
+            case TooltipPositionEnum.left: setTooltipPos('right-full mr-3'); setArrowPos('top-1/2 right-0 translate-x-1/2 -translate-y-1/2'); break;
+            case TooltipPositionEnum.right: setTooltipPos('left-full ml-3'); setArrowPos('top-1/2 left-0 -translate-x-1/2 -translate-y-1/2'); break;
+            default: setTooltipPos('top-full mt-4'); setArrowPos('bottom-full left-1/2 -translate-x-1/2 translate-y-1/2'); break;
+        }
+    }, [position]);
+
+    return (
+        <div className='group relative flex items-center justify-center'>
+            {children}
+
+            <span className={\`invisible group-hover:visible opacity-0 group-hover:opacity-100 absolute \${tooltipPos} transition-opacity duration-300 whitespace-nowrap text-2xl bg-violet-900 p-3 rounded-md\`}>
+                {tooltipText}
+
+                <div className={\`absolute transform rotate-45 w-3 h-3 bg-violet-900 \${arrowPos}\`} />
+            </span>
+        </div>
+    );
+};
+
+export default Tooltip;
+
+//Tooltip usage
+<Tooltip
+    tooltipText='Im on the right!'
+    position={TooltipPositionEnum.right}
+>
+    <p className='text-2xl bg-violet-800 p-4 rounded-md'>
+        Hover over me!
+    </p>
+</Tooltip>`;
+
 export default {
-    spinnerCode,
+    loadersCode,
     modalCode,
     dropdownCode,
+    paginatorCode,
+    tooltipCode,
 };
