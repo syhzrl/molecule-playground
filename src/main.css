@@ -16,6 +16,19 @@
     body {
         @apply bg-zinc-800;
     }
+
+    ::-webkit-scrollbar-track {
+        @apply bg-zinc-800;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply bg-violet-700;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
 }
 
 html,
@@ -24,4 +37,9 @@ body {
     margin: 0;
     font-family: 'Dosis';
     color: white;
+}
+
+p {
+    margin: 0;
+    padding: 0;
 }

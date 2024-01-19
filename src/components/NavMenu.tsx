@@ -22,10 +22,12 @@ const NavMenu: FunctionComponent = () => {
         'Modal',
         'Dropdown',
         'Spinner',
+        'Paginator',
+        'Tooltip',
     ];
 
     return (
-        <div className='flex flex-col items-center justify-between w-1/5 gap-10 p-4 bg-violet-700'>
+        <div className='flex flex-col items-center justify-between w-1/5 gap-10 p-4 bg-violet-700 sticky top-0 h-screen'>
             <p className='text-2xl font-bold'>
                 Molecule Playground
             </p>
