@@ -24,6 +24,7 @@ const NavMenu: FunctionComponent = () => {
         'Spinner',
         'Paginator',
         'Tooltip',
+        'Date Picker',
     ];
 
     return (
