@@ -6,9 +6,14 @@ module.exports = {
             animation: {
                 'spin-slow': 'spin 1.5s linear infinite',
             },
+            colors: {
+                'black-primary': '#292929',
+                'black-secondary': '#212121',
+                'white-primary': '#F0F2F5',
+            },
         },
         fontFamily: {
-            bold: ['Dosis-Bold'],
+            bold: ['Poppins-Bold'],
         },
     },
     plugins: [],

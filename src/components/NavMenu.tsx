@@ -10,7 +10,7 @@ const NavMenuButton: FunctionComponent<NavMenuButtonProps> = (props: NavMenuButt
     return (
         <button
             type='button'
-            className='w-full p-3 text-xl duration-150 rounded-md bg-violet-800 hover:bg-violet-900 hover:text-2xl'
+            className='w-full p-3 text-xl rounded-md bg-black-primary hover:bg-violet-800 transition-all duration-300 hover:text-2xl'
         >
             {label}
         </button>
@@ -25,11 +25,12 @@ const NavMenu: FunctionComponent = () => {
         'Paginator',
         'Tooltip',
         'Date Picker',
+        'Carousel',
     ];
 
     return (
-        <div className='flex flex-col items-center justify-between w-1/5 gap-10 p-4 bg-violet-700 sticky top-0 h-screen'>
-            <p className='text-2xl font-bold'>
+        <div className='flex flex-col items-center justify-between w-1/5 gap-10 p-4 bg-black-secondary sticky top-0 h-screen'>
+            <p className='text-2xl text-center font-bold'>
                 Molecule Playground
             </p>
 

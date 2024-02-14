@@ -10,6 +10,7 @@ import DropdownCard from '../../components/DropdownCard';
 import Paginator from '../../components/Paginator';
 import TooltipCard from '../../components/TooltipCard';
 import DatePicker from '../../components/DatePicker';
+import Carousel from '../../components/Carousel';
 
 const cardList = [{
     title: 'Modal',
@@ -35,8 +36,12 @@ const cardList = [{
     component: <TooltipCard />,
 }, {
     title: 'Date Picker',
-    code: '',
+    code: codes.datePickerCode,
     component: <DatePicker />,
+}, {
+    title: 'Carousel',
+    code: codes.datePickerCode,
+    component: <Carousel />,
 }];
 
 const HomeScreen: FunctionComponent = () => {

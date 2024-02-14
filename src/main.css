@@ -3,18 +3,18 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'Dosis';
-    src: url('./assets/fonts/Dosis-Regular.ttf');
+    font-family: 'Poppin';
+    src: url('./assets/fonts/Poppins-Regular.ttf');
 }
 
 @font-face {
-    font-family: 'Dosis-Bold';
-    src: url('./assets/fonts/Dosis-Bold.ttf');
+    font-family: 'Poppins-Bold';
+    src: url('./assets/fonts/Poppins-Bold.ttf');
 }
 
 @layer base {
     body {
-        @apply bg-zinc-800;
+        @apply bg-black-primary;
     }
 
     ::-webkit-scrollbar-track {
@@ -23,6 +23,12 @@
 
     ::-webkit-scrollbar-thumb {
         @apply bg-violet-700;
+    }
+}
+
+@layer components {
+    .ocean {
+        @apply bg-gradient-to-r from-[#84FAB0] to-[#8FD3F4]
     }
 }
 
@@ -35,7 +41,7 @@ html,
 body {
     padding: 0;
     margin: 0;
-    font-family: 'Dosis';
+    font-family: 'Poppin';
     color: white;
 }
 

@@ -31,7 +31,7 @@ const Card: FunctionComponent<CardProps> = (props: CardProps) => {
     };
 
     return (
-        <div className='flex flex-col w-full gap-2 p-4 rounded-md bg-zinc-900'>
+        <div className='flex flex-col w-full gap-2 p-4 rounded-md bg-black-secondary'>
             <p className='text-2xl'>
                 {title}
             </p>
@@ -54,7 +54,7 @@ const Card: FunctionComponent<CardProps> = (props: CardProps) => {
                         Code
                     </button>
                 </div>
-                <div className='flex flex-col items-center justify-center w-full h-full p-4 rounded-md bg-zinc-800'>
+                <div className='flex flex-col items-center justify-center w-full h-full p-4 rounded-md bg-black-primary'>
                     {renderCompOrCode()}
                 </div>
             </div>
